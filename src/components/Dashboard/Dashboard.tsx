@@ -23,21 +23,16 @@
 
 import * as TypesAndInterfaces from '../../types/index'
 import { useState } from "react"
+import TaskForm from '../TaskForm/TaskForm'
 
 export default function Dashboard(){
     //Tasks | For Tasks[] updates ================================
-    const [task, setTask] = useState <TypesAndInterfaces.Task[]>([])
+    const [tasks, setTasks] = useState <TypesAndInterfaces.Task[]>([])
 
-    //Form Fields | For Value Updates based on Change events ================================
-    const [field, setField] = useState(
-        {
-            title: '', //defaults
-            date: '', //defaults
-            memo: '' ,//defaults
-            status:'', //defaults
-            priority: '', //defaults
-        }
-    )
+    const handleTaskCreation = (newValue:TypesAndInterfaces.Task) =>{
+        setTasks(prevTasks => [...prevTasks, newValue]) //Add to array
+    }
+
 
     //Filter Setting(s) For all Tasks | For Filter Value update based on select ================================
    const [filter, setFilter] = useState<TypesAndInterfaces.Filters>(
@@ -49,10 +44,16 @@ export default function Dashboard(){
 
    //JSX
     return(
+
         <div className="dashboard">
             <h2>Money on the Dash</h2>
             <p><i>Where the real cash is made</i></p>
+
+            <TaskForm
+            onSubmit={handleTaskCreation}
+            />
         </div>
+        
         
     )
 }

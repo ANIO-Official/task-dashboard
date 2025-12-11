@@ -6,14 +6,14 @@ export type Priority = 'low' | 'medium' | 'high' | ''
 
 export interface Task{
     title: string,
-    date: Date,
+    date: number,
     memo: string,
     status:Status,
     priority: Priority
 }
 
 export interface TaskFormProps{
-    
+    onSubmit: (newTask:Task) => void //Recieve from parent --> Use to send to array.
 }
 
 export interface TaskListProps{
