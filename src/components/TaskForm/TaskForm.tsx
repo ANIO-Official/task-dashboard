@@ -23,7 +23,7 @@ export default function TaskForm({ onSubmit }: TaskFormProps) {
     }
 
     //On Submit, make a tasks object with values from the user's input.
-    const handleSubmit = () => {
+    const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event?.preventDefault()
         const newTask: Task = {
             title: field.title,
@@ -32,7 +32,13 @@ export default function TaskForm({ onSubmit }: TaskFormProps) {
             status: field.status,
             priority: field.priority,
         }
-        onSubmit(newTask) //use new task in handler w/ setter funct in dashboard
+
+        //Send to Submit data &  update tasks state
+        const form = event.currentTarget //gets the element with the handler (<form>)
+        const newTaskData = new FormData(form) //new form submission from the data submitted       
+        onSubmit(newTask) //use new task in handler w/ setter funct in dashboard. Push to Array       
+       
+        //Alert of new task added
         alert(`Adding Task:
             ${newTask.title}
             ${newTask.date}
@@ -40,6 +46,7 @@ export default function TaskForm({ onSubmit }: TaskFormProps) {
             ${newTask.priority}
             ${newTask.status}
             `)
+
         //Clear fields after
         setField(
             {

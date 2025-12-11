@@ -27,13 +27,18 @@ import TaskForm from '../TaskForm/TaskForm'
 import TaskList from '../TaskList/TaskList'
 
 export default function Dashboard() {
+    //Local StorageVariables For use on Load
+    const stringTaskData = localStorage.getItem('taskData') //Get local storage array
+    const parsedTaskData =  stringTaskData && JSON.parse(stringTaskData) //if Task data exist, parse it.
+
     //Tasks | For Tasks[] updates ================================
-    const [tasks, setTasks] = useState<TypesAndInterfaces.Task[]>([]) //Data
+    const [tasks, setTasks] = useState<TypesAndInterfaces.Task[]>(parsedTaskData) //Data
+    localStorage.setItem('taskData', JSON.stringify(tasks)) //Give key and stringify data
+
 
     const handleTaskCreation = (newValue: TypesAndInterfaces.Task) => {
         setTasks(prevTasks => [...prevTasks, newValue]) //Add to array
     }
-
 
     //Filter Setting(s) For all Tasks | For Filter Value update based on select ================================
     const [filter, setFilter] = useState<TypesAndInterfaces.Filters>(
@@ -43,10 +48,39 @@ export default function Dashboard() {
         }
     )
 
+    //Check if there is task data in local storage and if the window is defined/exit
+    function getTasks() {
+        if (typeof window !== "undefined") {
+            if (localStorage.getItem('taskData')) {
+                return true
+            }
+        }
+        return false
+    }
+ 
+    function parseTaskData() {
+        try {
+            setTasks(prevTasks => [...prevTasks, parsedTaskData]) //set tasks objects to the stored data from local storage
+        }
+        catch (error) {
+            console.error('Error parsing task data from local storage: ', error) //Note to self:Make custom errors
+            setTasks([]) // Return tasks as empty on error
+        }
+        finally{ console.log('Attempt Complete: Fetching data from local storage.') }
+    }
+
+    const handleDOMContentLoaded = (event:React.SyntheticEvent<HTMLDivElement>) => {
+        
+        if (getTasks()) {
+            parseTaskData()
+            console.log('Dashboard Loaded. Loading Tasks.')
+        }
+    }
+
     //JSX
     return (
 
-        <div className="dashboard">
+        <div className="dashboard" onLoad={handleDOMContentLoaded}>
             <h2>Money on the Dash</h2>
             <p><i>Where the real cash is made</i></p>
             <div className='main-items row row-col-md-2'>
