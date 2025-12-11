@@ -16,6 +16,10 @@ export interface TaskFormProps{
     onSubmit: (newTask:Task) => void //Recieve from parent --> Use to send to array.
 }
 
+export interface TaskItemProps{
+    task: Task;
+}
+
 export interface TaskListProps{
 
 }

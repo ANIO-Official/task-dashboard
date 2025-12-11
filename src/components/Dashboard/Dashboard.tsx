@@ -27,7 +27,7 @@ import TaskForm from '../TaskForm/TaskForm'
 
 export default function Dashboard(){
     //Tasks | For Tasks[] updates ================================
-    const [tasks, setTasks] = useState <TypesAndInterfaces.Task[]>([])
+    const [tasks, setTasks] = useState <TypesAndInterfaces.Task[]>([]) //Data
 
     const handleTaskCreation = (newValue:TypesAndInterfaces.Task) =>{
         setTasks(prevTasks => [...prevTasks, newValue]) //Add to array
