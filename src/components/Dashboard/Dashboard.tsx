@@ -1,6 +1,6 @@
 /*
     Holds
-    - task useState, setterFunct
+    - task useState, setterFunct: tasks
 
 
     Sends (Props)
@@ -18,3 +18,19 @@
     - TaskList Component | <ul>
     - Filters Component | <select> and text input
 */
+
+import * as TypesAndInterfaces from '../../types/index'
+import { useState } from "react"
+
+export default function Dashboard(){
+
+    const [task, setTask] = useState <TypesAndInterfaces.Task[]>([])
+   
+    return(
+        <div className="dashboard">
+            <h2>Money on the Dash</h2>
+            <p><i>Where the real cash is made</i></p>
+        </div>
+        
+    )
+}
