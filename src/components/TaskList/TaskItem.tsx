@@ -1,6 +1,9 @@
 import type { TaskItemProps } from "../../types";
 
 export default function TaskItem({ task }: TaskItemProps) {
+
+    //Need a change event handler for the selects. Reminder for later :3
+    
     return (
         <div>
             <h3>{task.title}</h3>
@@ -17,7 +20,8 @@ export default function TaskItem({ task }: TaskItemProps) {
             </div>
             <p>
                 <b>Date</b> {task.date}
-                <b>Date</b> {task.memo}
+                <br/>
+                <b>Memo</b> {task.memo}
             </p>
         </div>
     )

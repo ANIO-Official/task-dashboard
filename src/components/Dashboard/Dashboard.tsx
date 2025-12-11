@@ -24,36 +24,46 @@
 import * as TypesAndInterfaces from '../../types/index'
 import { useState } from "react"
 import TaskForm from '../TaskForm/TaskForm'
+import TaskList from '../TaskList/TaskList'
 
-export default function Dashboard(){
+export default function Dashboard() {
     //Tasks | For Tasks[] updates ================================
-    const [tasks, setTasks] = useState <TypesAndInterfaces.Task[]>([]) //Data
+    const [tasks, setTasks] = useState<TypesAndInterfaces.Task[]>([]) //Data
 
-    const handleTaskCreation = (newValue:TypesAndInterfaces.Task) =>{
+    const handleTaskCreation = (newValue: TypesAndInterfaces.Task) => {
         setTasks(prevTasks => [...prevTasks, newValue]) //Add to array
     }
 
 
     //Filter Setting(s) For all Tasks | For Filter Value update based on select ================================
-   const [filter, setFilter] = useState<TypesAndInterfaces.Filters>(
-    {
-        status: '', //defaults
-        priority: '' //defaults
-    }
-   )
+    const [filter, setFilter] = useState<TypesAndInterfaces.Filters>(
+        {
+            status: '', //defaults
+            priority: '' //defaults
+        }
+    )
 
-   //JSX
-    return(
+    //JSX
+    return (
 
         <div className="dashboard">
             <h2>Money on the Dash</h2>
             <p><i>Where the real cash is made</i></p>
+            <div className='main-items row row-col-md-2'>
+                <div className='task-form-component-container col'>
+                    <TaskForm
+                        onSubmit={handleTaskCreation}
+                    />
+                </div>
+                <div className='task-list-component-container col'>
+                    <TaskList
+                        tasks={tasks}
+                    />
+                </div>
+            </div>
 
-            <TaskForm
-            onSubmit={handleTaskCreation}
-            />
         </div>
-        
-        
+
+
     )
 }

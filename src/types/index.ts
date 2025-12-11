@@ -21,7 +21,7 @@ export interface TaskItemProps{
 }
 
 export interface TaskListProps{
-
+    tasks: Task[]
 }
 
 export interface TaskFilterProps{
