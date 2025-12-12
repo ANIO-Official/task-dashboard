@@ -23,9 +23,79 @@ export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormPr
         }))
     }
 
+    /*FORM VALIDITYCHECKS=========================== */
+
+    const handleInvalidInputs = (event: React.SyntheticEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>{
+        const target = event.currentTarget
+        const targetErrorMessager = target.nextElementSibling
+
+        switch (true){
+            case target.validity.valueMissing && target.name === 'title':
+                target.setCustomValidity('Must contain at least 1 letter.')
+                break;
+            case target.validity.valueMissing && target.name === 'date':
+                target.setCustomValidity('Must be a valid date of Month/Date/Year Hours:Minutes AM/PM format.')
+                break;
+            case target.validity.valueMissing && target.name === 'memo':
+                target.setCustomValidity('Must contain at least 1 letter.')
+                break;
+            case target.validity.valueMissing && target.name === 'status':
+                target.setCustomValidity('Please choose a status for your task.')
+                break;
+            case target.validity.valueMissing && target.name === 'priority':
+                target.setCustomValidity('Please choose a priority for your task.')
+                break;
+            case target.validity.tooLong  && target.name === 'title':
+                target.setCustomValidity('Max 25 characters.')
+                break;
+            default: target.setCustomValidity('')
+        }
+        
+        targetErrorMessager? targetErrorMessager.textContent = target.validationMessage : false
+    }
+
     //On Submit, make a tasks object with values from the user's input.
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event?.preventDefault()
+        //Prevent form creation when invalid
+        const titleInput : HTMLInputElement | null = event.currentTarget.querySelector('.task-title')
+        const dateInput : HTMLInputElement | null = event.currentTarget.querySelector('.task-title')
+        const memoInput : HTMLTextAreaElement | null = event.currentTarget.querySelector('.task-title')
+        const statusInput : HTMLSelectElement | null = event.currentTarget.querySelector('.task-title')
+        const priorityInput : HTMLSelectElement | null = event.currentTarget.querySelector('.task-title')
+
+        /*FORM VALIDITY ON SUBMIT=========================== */
+        //check for invalid areas
+        switch (true){
+            case titleInput && !titleInput.validity.valid:
+                console.log('Cannot create Task. Check title field.')
+                alert('A field has an invalid response, please check the highlighted field.')
+                titleInput.focus()
+                return
+            case dateInput && !dateInput.validity.valid:
+                console.log('Cannot create Task. Check date field.')
+                alert('A field has an invalid response, please check the highlighted field.')
+                dateInput.focus()
+                return
+            case memoInput && !memoInput.validity.valid:
+                console.log('Cannot create Task. Check memo field.')
+                alert('A field has an invalid response, please check the highlighted field.')
+                memoInput.focus()
+                return
+            case statusInput && !statusInput.validity.valid:
+                console.log('Cannot create Task. Check status field.')
+                alert('A field has an invalid response, please check the highlighted field.')
+                statusInput.focus()
+                return
+            case priorityInput && !priorityInput.validity.valid:
+                console.log('Cannot create Task. Check priority field.')
+                alert('A field has an invalid response, please check the highlighted field.')
+                priorityInput.focus()
+                return
+            default: console.log('All fields looking good!')
+        }
+
+        //Create form when valid
         const makeID = `${field.title.trim()[0]}-${Date.now().toString()}`
         const newTask: Task = {
             id: makeID,
@@ -69,32 +139,37 @@ export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormPr
         <form className="taskForm" onSubmit={handleSubmit}>
             <div className="task-title-container">
                 <label htmlFor="title">Title</label>
-                <input onChange={handleInputChange} name="title" value={field.title} />
+                <input maxLength={25} onInput={handleInvalidInputs} className="task-title" onChange={handleInputChange} name="title" value={field.title} required/>
+                <span className="input-error"></span>
             </div>
             <div className="task-date-container">
                 <label htmlFor="date">Due Date</label>
-                <input onChange={handleInputChange} type="datetime-local" name="date" value={field.date} />
+                <input onInput={handleInvalidInputs} className="task-date" onChange={handleInputChange} type="datetime-local" name="date" value={field.date} required/>
+                <span className="input-error"></span>
             </div>
             <div className="task-memo-container">
                 <label htmlFor="memo">Memo</label>
-                <textarea onChange={handleInputChange} name="memo" value={field.memo} />
+                <textarea maxLength={300} cols={50} rows={7} onInput={handleInvalidInputs} className="task-memo" onChange={handleInputChange} name="memo" value={field.memo} required/>
+                <span className="input-error"></span>
             </div>
             <div className="task-status-container">
                 <label htmlFor="status">Status</label>
-                <select onChange={handleInputChange} name="status" value={field.status}>
+                <select onInvalid={handleInvalidInputs} onChange={handleInputChange} name="status" value={field.status} required>
                     <option value=''>Choose Status</option>
                     <option value='incomplete'>Incomplete</option>
                     <option value='complete'>Complete</option>
                 </select>
+                <span className="input-error"></span>
             </div>
             <div className="task-priority-container">
                 <label htmlFor="priority">Priority</label>
-                <select onChange={handleInputChange} name="priority" value={field.priority}>
+                <select onInvalid={handleInvalidInputs} onChange={handleInputChange} name="priority" value={field.priority} required>
                     <option value=''>Choose Priority</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
                 </select>
+                <span className="input-error"></span>
             </div>
             <button type="submit">Add Task</button>
 
