@@ -1,5 +1,7 @@
 import type { Filters, TaskItemProps } from "../../types";
 import { useState } from "react";
+import './TaskItem.css'
+
 export default function TaskItem({ task, onChange }: TaskItemProps) {
 
     //Field state variables for updating values
@@ -22,8 +24,8 @@ export default function TaskItem({ task, onChange }: TaskItemProps) {
     }
     
     return (
-        <div>
-            <h3>{task.title}</h3>
+        <div className="task-item">
+            <h3 className="title">{task.title}</h3>
             <div>
                 <select onChange={handleChanges} className="status-select" name="status" value={field.status}>
                     <option value="incomplete">Incomplete</option>
@@ -36,9 +38,9 @@ export default function TaskItem({ task, onChange }: TaskItemProps) {
                 </select>
             </div>
             <p>
-                <b>Date</b> {task.date}
+                <b className="date">Date</b> {task.date}
                 <br/>
-                <b>Memo</b> {task.memo}
+                <b className="memo">Memo</b> {task.memo}
             </p>
         </div>
     )

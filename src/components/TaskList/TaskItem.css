@@ -1,0 +1,18 @@
+.title{
+    color: rgb(36, 40, 119);
+}
+
+select{
+    background-color: rgb(134, 176, 230);
+
+}
+.priority-select{
+    margin-left: 0.5vw;
+}
+
+.task-item{
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    padding: 0.25vw 0.1vw;
+    margin-bottom: 1vw;
+}

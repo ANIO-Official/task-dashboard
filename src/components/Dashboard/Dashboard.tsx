@@ -27,6 +27,7 @@ import TaskForm from '../TaskForm/TaskForm'
 import TaskList from '../TaskList/TaskList'
 import TaskFilter from '../TaskFilter/TaskFilter'
 import type { Task } from '../../types/index'
+import './Dashboard.css'
 
 export default function Dashboard() {
 
@@ -107,8 +108,16 @@ export default function Dashboard() {
     return (
 
         <div className="dashboard" >
-            <h2>Money on the Dash</h2>
-            <p><i>Where the real cash is made</i></p>
+            <h2>🐾Dash Cat🐾</h2>
+            <p><i>Tasks with Cats</i></p>
+            <div className='task-statistics'>
+                <h3>How's your progress? 🐱‍🐉</h3>
+                <div className='stats d-flex flex-row justify-content-evenly'>
+                    <p className='incomplete-tasks-stat'>{tasks.filter((task) => task.status === 'incomplete').length} Pending Tasks</p>
+                    <p className='complete-tasks-stat'>{tasks.filter((task) => task.status === 'complete').length} Completed Tasks</p>
+                    <p className='all-tasks-stat'>{tasks.length} Tasks Total</p>
+                </div>
+            </div>
             <div className='main-items row row-col-md-2'>
                 <div className='task-filter-component-container'>
                     <TaskFilter
@@ -117,7 +126,7 @@ export default function Dashboard() {
                         tasks={filteredTasks}
                     />
                 </div>
-                <div className='task-form-component-container col'>
+                <div className='task-form-component-container col border rounded p-4 m-3 bg-primary-subtle'>
                     <TaskForm
                         onSubmit={handleTaskCreation}
                         updateFilteredDefault={handleFilterDefault}

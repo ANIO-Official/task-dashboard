@@ -1,0 +1,21 @@
+.dashboard{
+    background: linear-gradient(rgb(171, 213, 226),rgb(246, 250, 255), rgb(169, 162, 238));
+    padding: 5vw 10vw;
+    border-radius: 1rem;
+}
+
+.incomplete-tasks-stat{
+    color: rgb(180, 84, 6);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.complete-tasks-stat{
+    color: rgb(3, 100, 47);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.all-tasks-stat{
+    color: rgb(31, 31, 121);
+    font-weight: bold;
+    font-size: 1.2rem;
+}

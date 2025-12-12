@@ -1,0 +1,14 @@
+
+li{
+    list-style: none;
+}
+
+select{
+    border-radius: 0.8rem;
+    padding: 0.2rem;
+    border: none;
+}
+
+.task-list-container {
+    padding-ricght: 2vw;
+}

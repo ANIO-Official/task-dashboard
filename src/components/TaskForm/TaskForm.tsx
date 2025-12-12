@@ -1,6 +1,6 @@
 import { useState } from "react"
 import type { TaskFormProps, Task } from "../../types";
-
+import './TaskForm.css'
 
 export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormProps) {
     //Form Fields | For Value Updates based on Change events ================================
@@ -136,24 +136,29 @@ export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormPr
 
 
     return (
-        <form className="taskForm" onSubmit={handleSubmit}>
+        <form className="taskForm d-flex flex-column align-items-center" onSubmit={handleSubmit}>
+            <h2>Add New Task 🐈</h2>
             <div className="task-title-container">
-                <label htmlFor="title">Title</label>
+                <label  htmlFor="title">Title</label>
+                <br/>
                 <input maxLength={25} onInput={handleInvalidInputs} className="task-title" onChange={handleInputChange} name="title" value={field.title} required/>
                 <span className="input-error"></span>
             </div>
             <div className="task-date-container">
-                <label htmlFor="date">Due Date</label>
+                <label  htmlFor="date">Due Date</label>
+                <br/>
                 <input onInput={handleInvalidInputs} className="task-date" onChange={handleInputChange} type="datetime-local" name="date" value={field.date} required/>
                 <span className="input-error"></span>
             </div>
             <div className="task-memo-container">
-                <label htmlFor="memo">Memo</label>
+                <label  htmlFor="memo">Memo</label>
+                <br/>
                 <textarea maxLength={300} cols={50} rows={7} onInput={handleInvalidInputs} className="task-memo" onChange={handleInputChange} name="memo" value={field.memo} required/>
                 <span className="input-error"></span>
             </div>
             <div className="task-status-container">
-                <label htmlFor="status">Status</label>
+                <label  htmlFor="status">Status</label>
+                <br/>
                 <select onInvalid={handleInvalidInputs} onChange={handleInputChange} name="status" value={field.status} required>
                     <option value=''>Choose Status</option>
                     <option value='incomplete'>Incomplete</option>
@@ -162,7 +167,8 @@ export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormPr
                 <span className="input-error"></span>
             </div>
             <div className="task-priority-container">
-                <label htmlFor="priority">Priority</label>
+                <label  htmlFor="priority">Priority</label>
+                <br/>
                 <select onInvalid={handleInvalidInputs} onChange={handleInputChange} name="priority" value={field.priority} required>
                     <option value=''>Choose Priority</option>
                     <option value="low">Low</option>
@@ -171,6 +177,7 @@ export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormPr
                 </select>
                 <span className="input-error"></span>
             </div>
+            <br/>
             <button type="submit">Add Task</button>
 
         </form>
