@@ -1,6 +1,7 @@
 /* Types */
 export type Status = 'incomplete' | 'complete' | ''
 export type Priority = 'low' | 'medium' | 'high' | ''
+export type Alphabetical = 'a-z' | 'z-a' 
 
 /* Object Shapes | Interfaces */
 
@@ -15,6 +16,7 @@ export interface Task{
 
 export interface TaskFormProps{
     onSubmit: (newTask:Task) => void //Recieve from parent --> Use to send to array.
+    updateFilteredDefault: (newTask:Task) => void
 }
 
 export interface TaskItemProps{
@@ -28,9 +30,12 @@ export interface TaskListProps{
 }
 
 export interface TaskFilterProps{
-
+    onFilter: (value:string, filterType:string) => void //send back filter value to set state
+    onSort: (sortedTasks: Task[]) => void
+    tasks: Task[]
 }
 export interface Filters{
     status?: Status 
     priority?: Priority
+    alphabetical?: Alphabetical
 }

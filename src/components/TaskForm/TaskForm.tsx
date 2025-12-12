@@ -2,7 +2,7 @@ import { useState } from "react"
 import type { TaskFormProps, Task } from "../../types";
 
 
-export default function TaskForm({ onSubmit }: TaskFormProps) {
+export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormProps) {
     //Form Fields | For Value Updates based on Change events ================================
     const [field, setField] = useState<Task>(
         {
@@ -40,6 +40,7 @@ export default function TaskForm({ onSubmit }: TaskFormProps) {
         const form = event.currentTarget //gets the element with the handler (<form>)
         const newTaskData = new FormData(form) //new form submission from the data submitted       
         onSubmit(newTask) //use new task in handler w/ setter funct in dashboard. Push to Array       
+        updateFilteredDefault(newTask)
 
         //Alert of new task added
         alert(`Adding Task:
