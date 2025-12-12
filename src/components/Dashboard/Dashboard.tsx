@@ -59,33 +59,18 @@ export default function Dashboard() {
         setFilteredTasks(prevTasks => [...prevTasks, newTask])
     }
 
-    const handleFiltering = (filterValue: string, filterType:String) => {
-        setFilter(filterValue)       
+    const handleFiltering = (filterValue: string, filterType: String) => {
+        setFilter(filterValue)
         //Show Combos
         filterValue && setFilteredTasks(tasks.filter(task => task.status && task.priority === filterValue))
 
-        //Show Status
-        filterValue  && setFilteredTasks(tasks.filter(task => filterType === 'status'? task.status === filterValue : filterType === 'priority'? task.priority === filterValue : false))
-
-        //Show Priority
-     //   filterValue  && setFilteredTasks(tasks.filter(task => task.priority === filterValue))
+        //Show Status or Priority
+        filterValue && setFilteredTasks(tasks.filter(task => filterType === 'status' ? task.status === filterValue : filterType === 'priority' ? task.priority === filterValue : false))
 
         //Show all
         filterValue === '' && setFilteredTasks(tasks)
 
-        // if (filterValue === 'incomplete' || 'complete') {
-        //     setFilteredTasks(
-        //         tasks.filter(task => task.status === filterValue)
-        //     )
-        // }
-        // if (filterValue === 'low' || 'medium' || 'high') {
-        //     setFilteredTasks(
-        //         tasks.filter(task => task.priority === filterValue)
-        //     )
-        // }
-        
     }
-
 
     const handleSorting = (sortedTasks: Task[]) => {
         setFilteredTasks(sortedTasks)
