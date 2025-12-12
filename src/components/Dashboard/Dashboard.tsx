@@ -27,6 +27,7 @@ import TaskForm from '../TaskForm/TaskForm'
 import TaskList from '../TaskList/TaskList'
 
 export default function Dashboard() {
+
     //Local StorageVariables For use on Load
     const stringTaskData = localStorage.getItem('taskData') //Get local storage array
     const parsedTaskData =  stringTaskData && JSON.parse(stringTaskData) //if Task data exist, parse it.
@@ -35,9 +36,21 @@ export default function Dashboard() {
     const [tasks, setTasks] = useState<TypesAndInterfaces.Task[]>(parsedTaskData) //Data
     localStorage.setItem('taskData', JSON.stringify(tasks)) //Give key and stringify data
 
+    //Filtered Tasks | For Tasks[] that is filtered ======================================
+    const [filteredTasks, setFilteredTasks] = useState<TypesAndInterfaces.Task[]>(tasks) //initial value, will match the local storage.
 
+
+    //Update tasks state -> Add new tasks to array
     const handleTaskCreation = (newValue: TypesAndInterfaces.Task) => {
         setTasks(prevTasks => [...prevTasks, newValue]) //Add to array
+    }
+    //Update Task Values
+    const handleTaskChanges = (taskID:string, fieldName: string, fieldValue: string) =>{
+        setTasks( prevTasks =>
+            prevTasks.map( task => 
+                task.id === taskID? {...task, [fieldName]: fieldValue} : task
+            )
+        )
     }
 
     //Filter Setting(s) For all Tasks | For Filter Value update based on select ================================
@@ -70,7 +83,6 @@ export default function Dashboard() {
     }
 
     const handleDOMContentLoaded = (event:React.SyntheticEvent<HTMLDivElement>) => {
-        
         if (getTasks()) {
             parseTaskData()
             console.log('Dashboard Loaded. Loading Tasks.')
@@ -92,6 +104,7 @@ export default function Dashboard() {
                 <div className='task-list-component-container col'>
                     <TaskList
                         tasks={tasks}
+                        onChange={handleTaskChanges}
                     />
                 </div>
             </div>

@@ -2,7 +2,7 @@ import type { TaskListProps } from "../../types";
 import TaskItem from "./TaskItem";
 
 
-export default function TaskList({tasks}:TaskListProps){
+export default function TaskList({tasks, onChange}:TaskListProps){
     
     return(
         <div className="task-list-container">
@@ -14,7 +14,8 @@ export default function TaskList({tasks}:TaskListProps){
                         //Key is first letter of Title + Date
                     <li key={`${task.title.trim()[0]} + ${task.date.toString}`}>
                         <TaskItem
-                            task={task}
+                            task={task} //send the task from tasks state variabel array
+                            onChange={onChange} //send the setter function
                         />
                     </li>
                     )
