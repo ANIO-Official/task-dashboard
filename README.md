@@ -142,6 +142,15 @@ Brief about my process. Here are my steps:
 
 **Component Composition & State Management**
 
+  For comoponent composition, I arranged composnents based on who they would need to communicate with via props. One particular thing I did to aid this process, was to first go into my dashboard component and type out comments that explain where and what communications needed to occur. Ultimately the flow followed this structure:
+  
+  (PARENT:  Dashboard Component)
+
+  (CHILD TO DASHBOARD: Task Filter, Task List, and Task Form Components)
+
+  (CHILD TO TASK LIST: Task Item Component)
+
+  For State management, I placed state variables at the top level of their respective components. For state variables that would need to be passed to most children, such as the tasks, filter tasks, and state setter functions, I kept them in the Dashboard parent component. If a child's child needed that same information, I passed the state variable from parent -> child --> child's child. So that when an update occured, it could flow back to the main parent via child --> parent --> parent's parent. In summary, I used the callback patten for updates to state; Generational. 
 
 
 
