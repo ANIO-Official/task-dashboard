@@ -1,90 +1,177 @@
-.all-tasks-stat{
-    color: rgb(31, 31, 121);
-    font-weight: bold;
+.all-tasks-stat {
+  color: rgb(31, 31, 121);
+  font-weight: bold;
 }
-
-button:hover{
-  border-color: #646cff;
+.dark .all-tasks-stat {
+  color: rgb(248, 216, 110);
 }
-.complete-tasks-stat{
-    color: rgb(3, 100, 47);
-}
-
-.dark{
+body {
+  background-color: #1f1b1a;
   color: white;
-  background-color: #181b27;
+  transition: 0.5s;
 }
 
-input:user-invalid, textarea:user-invalid{
-  background-color: rgb(247, 168, 168);
-  outline: 2px solid red;
+body:has(.dashboard.light) {
+  background-color: white;
+  color: #1f1b1a;
+  transition: 0.5s;
 }
 
-.dashboard{
-    background: linear-gradient(rgb(171, 213, 226),rgb(246, 250, 255), rgb(169, 162, 238));
-    padding: 5vw 10vw;
-    border-radius: 1rem;
-    width: fit-content;
+.dark .input-error {
+  color: white;
 }
 
-.incomplete-tasks-stat{
-    color: rgb(180, 84, 6);
-    font-weight: bold;
+button {
+  background: linear-gradient(rgb(247, 124, 86), rgb(238, 208, 162));
+  color: #1f1b1a;
 }
 
-.task-statistics p{
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-.task-statistics h3{
-    font-size: 1.7rem;
-}
-.task-form-and-list-container{
-    margin: 1vw auto;
+.dark button{
+  background: linear-gradient(rgb(72, 36, 131), rgb(124, 60, 129));
+  color: white;
 }
 
-.task-list-component-container{
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
+button:hover {
+  border-color: #ffa061;
+  filter: drop-shadow(5px 3px #ca4c26);
+}
+.dark button:hover{
+  border-color: #ffa061;
+  filter: drop-shadow(5px 3px #ca26ca);
+}
+
+.complete-tasks-stat {
+  color: rgb(3, 100, 47);
+}
+.dark .complete-tasks-stat {
+  color: rgb(161, 221, 169);
+}
+.dashboard {
+  background: linear-gradient(rgb(226, 182, 171), rgb(255, 248, 246), rgb(236, 146, 119));
+  border-radius: 1rem;
+  padding: 5vw 10vw;
+  width: fit-content;
+}
+
+.dashboard.dark {
+  background: linear-gradient(rgb(98, 68, 138), rgb(174, 117, 207), rgb(230, 120, 162));
 }
 
 
-select{
+.dark select {
+  background-color: rgb(72, 36, 131);
+}
+
+.dashboard-theme-toggle {
+  background: linear-gradient(rgb(98, 68, 138), rgb(174, 117, 207), rgb(230, 120, 162));
+  border: none;
+  color: #161414;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-theme-toggle.dark {
+  background: linear-gradient(rgb(250, 230, 176), rgb(231, 185, 133), rgb(252, 142, 108));
+  color: #1f1b1a;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #ffa061;
+  filter: drop-shadow(5px 3px #ca4c26);
+  outline: 2px solid rgb(34, 140, 167);
+}
+
+input:hover,
+textarea:hover {
+  outline: 2px solid rgb(241, 195, 40);
+}
+
+.incomplete-tasks-stat {
+  color: rgb(180, 84, 6);
+  font-weight: bold;
+}
+.dark .incomplete-tasks-stat {
+  color: rgb(245, 169, 211);
+}
+
+.stat {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.task-statistics h3 {
+  font-size: 1.7rem;
+}
+
+.task-form-and-list-container {
+  background-color: rgb(238, 180, 153);
+  filter: drop-shadow(0 0 0.75rem rgba(185, 39, 39, 0.644));
+  margin: 1vw auto;
+}
+
+.task-form-and-list-container.dark {
+  background-color: rgb(84, 69, 134);
+  filter: drop-shadow(0 0 0.75rem rgba(43, 19, 99, 0.644));
+}
+
+
+.task-list-component-container {
+  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+}
+
+
+select {
+  background-color: rgb(252, 142, 108);
+  max-width: 158px;
+  min-width: fit-content;
+  padding: 0.5rem;
   transition: 0.4s;
+
 }
- select:hover {
-  outline: 2px solid #646cff;
- }
+
+select:hover {
+  outline: 2px solid #ffa061;
+}
+
 select,
 ::picker(select) {
   appearance: base-select;
 }
+
 select:open::picker-icon {
   rotate: 90deg;
 }
-select::picker-icon{
-  color: rgb(28, 74, 143);
+
+select::picker-icon {
+  color: rgb(180, 84, 6);
 }
+
 ::picker(select) {
-  border: none;
   border-radius: 10px;
+  border: none;
   margin: 0.25rem 0;
 }
+
 option:checked {
   font-weight: bold;
 }
-option{
-  background-color: #c8c9ee;
+
+option {
+  background-color: rgb(238, 180, 153);
   font-size: 1rem;
 }
-option:last-of-type{
+
+option:last-of-type {
   border-radius: 0 0 10px 10px;
 }
-option:first-of-type{
-  border-radius: 10px 10px 0 0 ;
+
+option:first-of-type {
+  border-radius: 10px 10px 0 0;
 }
-option:hover{
-   background-color: #0a4175;
-   color: white;
+
+option:hover {
+  background-color: rgb(177, 91, 76);
+  color: white;
 }

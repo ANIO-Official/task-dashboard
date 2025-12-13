@@ -6,19 +6,15 @@
     padding: 1rem;
 }
 
-button{
-    background: linear-gradient(rgb(86, 155, 247), rgb(169, 162, 238));
-}
-button:hover {
-  border-color: #c561ff;
-  filter: drop-shadow(5px 3px #c561ff);
-}
-
 .task-filter-result-notification{
     padding: 0.25rem 1rem;
     font-weight: bold;
     border-radius: 1rem;
     font-size: 1rem;
+}
+
+.dark .task-filter-result-notification{
+    color: #1f1b1a;
 }
 
 .filter-selects{

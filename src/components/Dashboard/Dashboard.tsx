@@ -44,6 +44,10 @@ export default function Dashboard() {
     [...tasks]
   );
 
+  //Theme Toggle
+  const [theme, setTheme] = useState('light')
+  
+  /* TASK ARRAY UPDATES & ITEM UPDATES================================= */
   //Update tasks state -> Add new tasks to array
   const handleTaskCreation = (newValue: TypesAndInterfaces.Task) => {
     setTasks((prevTasks) => [...prevTasks, newValue]); //Add to array
@@ -99,9 +103,7 @@ export default function Dashboard() {
     setFilteredTasks(sortedTasks);
   };
 
-  /* FILTER & SORT FUNCTIONS END================================= */
-
-  /* LOCAL STORAGE FUNCTIONS================================= */
+  /* LOCAL STORAGE FUNCTION================================= */
 
   //Check if there is task data in local storage and if the window is defined/exit
   function getTasks() {
@@ -113,27 +115,31 @@ export default function Dashboard() {
     return false;
   }
 
-  /* LOCAL STORAGE FUNCTIONS END================================= */
+  /* THEME TOGGLE FUNCTION================================= */
+  const handleThemeToggle = () =>{
+    setTheme(prevTheme => prevTheme === 'light'? 'dark':'light')
+  }
 
   //JSX
   return (
-    <div className="dashboard">
+    <div className={`dashboard ${theme}`}>
       <h2>🐾Dash Cat🐾</h2>
       <p>
         <i>Tasks with Cats</i>
       </p>
+      <button onClick={handleThemeToggle} className={`dashboard-theme-toggle ${theme}`}>{theme === 'light'? '(＾• ω •＾) Go Dark🐾': 'ฅ(•ㅅ•❀)ฅ	Go Light🐾'}</button>
       <div className="task-statistics">
         <h3>How's your progress? 🐱‍🐉</h3>
         <div className="stats d-flex flex-row justify-content-evenly">
-          <p className="incomplete-tasks-stat">
+          <p className={`incomplete-tasks-stat stat ${theme}`}>
             {tasks.filter((task) => task.status === "incomplete").length}{" "}
             Pending Tasks
           </p>
-          <p className="complete-tasks-stat">
+          <p className={`complete-tasks-stat stat ${theme}`}>
             {tasks.filter((task) => task.status === "complete").length}{" "}
             Completed Tasks
           </p>
-          <p className="all-tasks-stat">{tasks.length} Tasks Total</p>
+          <p className={`all-tasks-stat stat ${theme}`}>{tasks.length} Tasks Total</p>
         </div>
       </div>
       <div className="main-items">
@@ -144,7 +150,7 @@ export default function Dashboard() {
             tasks={filteredTasks}
           />
         </div>
-        <div className="task-form-and-list-container d-md-flex flex-md-row border rounded bg-primary-subtle">
+        <div className={`task-form-and-list-container ${theme} d-md-flex flex-md-row rounded`} >
           <div className="task-form-component-container">
             <TaskForm
               onSubmit={handleTaskCreation}

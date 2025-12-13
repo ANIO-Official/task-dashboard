@@ -29,21 +29,21 @@ export default function TaskItem({ task, onChange, onDelete }: TaskItemProps) {
   };
 
   const handleDeletion = () =>{
-    alert('Scratched off!')
+    alert('Scratched off! 🙀')
     onDelete(task.id)
   }
 
   return (
     <div className="task-item">
       <div className="delete">
-        <button onClick={handleDeletion}>Remove Task</button>
+        <button onClick={handleDeletion}>Remove Task😿</button>
       </div>
       <input
         onChange={handleChanges}
         name="title"
         type="text"
         className="task-title my-2"
-        value={field.title}
+        value={`${field.title}🐈`}
       />
       <div>
         <select
