@@ -71,59 +71,6 @@ export default function TaskForm({
   //On Submit, make a tasks object with values from the user's input.
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
-    //Prevent form creation when invalid
-    const titleInput: HTMLInputElement | null =
-      event.currentTarget.querySelector(".task-title");
-    const dateInput: HTMLInputElement | null =
-      event.currentTarget.querySelector(".task-title");
-    const memoInput: HTMLTextAreaElement | null =
-      event.currentTarget.querySelector(".task-title");
-    const statusInput: HTMLSelectElement | null =
-      event.currentTarget.querySelector(".task-title");
-    const priorityInput: HTMLSelectElement | null =
-      event.currentTarget.querySelector(".task-title");
-
-    /*FORM VALIDITY ON SUBMIT=========================== */
-    //check for invalid areas
-    switch (true) {
-      case titleInput && !titleInput.validity.valid:
-        console.log("Cannot create Task. Check title field.");
-        alert(
-          "A field has an invalid response, please check the highlighted field."
-        );
-        titleInput.focus();
-        return;
-      case dateInput && !dateInput.validity.valid:
-        console.log("Cannot create Task. Check date field.");
-        alert(
-          "A field has an invalid response, please check the highlighted field."
-        );
-        dateInput.focus();
-        return;
-      case memoInput && !memoInput.validity.valid:
-        console.log("Cannot create Task. Check memo field.");
-        alert(
-          "A field has an invalid response, please check the highlighted field."
-        );
-        memoInput.focus();
-        return;
-      case statusInput && !statusInput.validity.valid:
-        console.log("Cannot create Task. Check status field.");
-        alert(
-          "A field has an invalid response, please check the highlighted field."
-        );
-        statusInput.focus();
-        return;
-      case priorityInput && !priorityInput.validity.valid:
-        console.log("Cannot create Task. Check priority field.");
-        alert(
-          "A field has an invalid response, please check the highlighted field."
-        );
-        priorityInput.focus();
-        return;
-      default:
-        console.log("All fields looking good!");
-    }
 
     //Create form when valid
     const makeID = `${field.title.trim()[0]}-${Date.now().toString()}`;
@@ -160,6 +107,7 @@ export default function TaskForm({
       status: "", //defaults
       priority: "", //defaults
     });
+    form.reset() //reset form
   };
 
   return (

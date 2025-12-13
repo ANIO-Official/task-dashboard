@@ -15,6 +15,11 @@ button:hover{
   background-color: #181b27;
 }
 
+input:user-invalid, textarea:user-invalid{
+  background-color: rgb(247, 168, 168);
+  outline: 2px solid red;
+}
+
 .dashboard{
     background: linear-gradient(rgb(171, 213, 226),rgb(246, 250, 255), rgb(169, 162, 238));
     padding: 5vw 10vw;

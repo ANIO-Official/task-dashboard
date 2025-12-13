@@ -60,9 +60,15 @@ export default function Dashboard() {
       )
     );
   };
+  /* TASK DELETION ================================= */
+  const handleTaskDeletion = (taskID: string) => {
+    setTasks(prevTasks => prevTasks.filter((task:Task) => task.id !== taskID)) //remove from both | Memory
+    setFilteredTasks(prevTasks => prevTasks.filter((task:Task) => task.id !== taskID)) //remove from both | Displayed
+  }
+
   /* FILTER & SORT FUNCTIONS================================= */
   const handleFilterDefault = (newTask: Task) => {
-    setFilteredTasks((prevTasks) => [...prevTasks, newTask]);
+    setFilteredTasks((prevTasks) => [...prevTasks, newTask]); //whenever a new task is made, make sure filteredTasks updates as well
   };
 
   const handleFiltering = (filterValue: string, filterType: String) => {
@@ -146,7 +152,7 @@ export default function Dashboard() {
             />
           </div>
           <div className="task-list-component-container">
-            <TaskList tasks={filteredTasks} onChange={handleTaskChanges} />
+            <TaskList tasks={filteredTasks} onChange={handleTaskChanges} onDelete={handleTaskDeletion} />
           </div>
         </div>
       </div>

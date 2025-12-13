@@ -2,7 +2,7 @@ import type { Filters, Task, TaskItemProps } from "../../types";
 import { useState } from "react";
 import "./TaskItem.css";
 
-export default function TaskItem({ task, onChange }: TaskItemProps) {
+export default function TaskItem({ task, onChange, onDelete }: TaskItemProps) {
   //Field state variables for updating values
   const [field, setField] = useState<Task>({
     id: task.id, //CAUTION: DO NOT USE SETFIELD ON THIS. Must stay the same for React state changes.
@@ -28,8 +28,16 @@ export default function TaskItem({ task, onChange }: TaskItemProps) {
     onChange(task.id, name, value); //Update Item in array
   };
 
+  const handleDeletion = () =>{
+    alert('Scratched off!')
+    onDelete(task.id)
+  }
+
   return (
     <div className="task-item">
+      <div className="delete">
+        <button onClick={handleDeletion}>Remove Task</button>
+      </div>
       <input
         onChange={handleChanges}
         name="title"

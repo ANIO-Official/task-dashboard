@@ -2,7 +2,7 @@ import type { TaskListProps } from "../../types";
 import TaskItem from "./TaskItem";
 import "./TaskList.css";
 
-export default function TaskList({ tasks, onChange }: TaskListProps) {
+export default function TaskList({ tasks, onChange, onDelete }: TaskListProps) {
   return (
     <div className="task-list-container rounded">
       <h2 className="ps-4">Current Tasks🐱‍👓</h2>
@@ -15,6 +15,7 @@ export default function TaskList({ tasks, onChange }: TaskListProps) {
               <TaskItem
                 task={task} //send the task from tasks state variabel array
                 onChange={onChange} //send the setter function
+                onDelete={onDelete}
               />
             </li>
           ))

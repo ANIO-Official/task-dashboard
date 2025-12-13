@@ -22,11 +22,13 @@ export interface TaskFormProps {
 export interface TaskItemProps {
   task: Task;
   onChange: (taskID: string, name: string, value: string) => void; //Add change event to selects for all items
+  onDelete: (taskID:string) => void //Delete task, send ID to parent 
 }
 
 export interface TaskListProps {
   tasks: Task[];
   onChange: (taskID: string, name: string, value: string) => void; //let parent update tasks values
+  onDelete: (taskID:string) => void //Delete task, send ID to parent
 }
 
 export interface TaskFilterProps {
