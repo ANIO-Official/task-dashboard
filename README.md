@@ -152,19 +152,29 @@ Brief about my process. Here are my steps:
 **GENERALLY HELPFUL DURING CODING PROCESS**
 
 [Component Library | Re-referenced for Syntax](https://github.com/ANIO-Official/component-library)
+
 [Your Blog Script | Filtering, Deleting, Form Validation Vanilla JS Method](https://github.com/ANIO-Official/your-blog-journaling-app/blob/main/script.js#L182)
+
 [The Coding Loft | Sort & Filter using React & TypeScript](https://youtu.be/2iEfZWz1jvs?si=KXmw4k4AEwa2ui43)
+
 [QiroLab | React List & Keys](https://youtu.be/UUk1scVLrCQ?si=A_0iiyUq_CRhsFIT)
+
 [Nova Designs | Just the UseState Part](https://youtu.be/43H_PNDPHtg?si=8toFRHnZY4dF7XNn)
+
 [Devtamin | Lists and Map in React](https://youtu.be/qb8dT978Wec?si=JKE2PMqy_9rfQVz2)
+
 [Codevolution | List & Keys  (Older but great Conceptually!)](https://youtu.be/0sasRxl35_8?si=EyzT6P-Hb3tjpW6o)
+
 [Stack OVerflow | Change Parent CSS based on Child](https://stackoverflow.com/questions/2326499/apply-css-styles-to-an-element-depending-on-its-child-elements)
 
 **MDN SPECIFIC**
 
 [MDN DateTime-Local](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local)
+
 [MDN Current Target | (Very good when TS doesn't like event.target)](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)
+
 [MDN Custom Select](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select)
+
 [MDN Custom Select Play | Sandbox](https://developer.mozilla.org/en-US/play?uuid=6bf9cd93e148f955ed82aa7d7aa0924abe7dd534&state=tVbBbuM2EP2VAYMFktaK7WBRpFzHaNGi2GOBveoyJkcW1xRJkHRi7yKfULQFeuhtv6GXov2d%2FkD7CQVFSZGTbLYOUAGGLfK9maeZx5Hfszo2mnG2qKxvlqUBWLj2C2ChcUUaKuuvSuYoFoE0iViy5Zv2BziKfDFtUT0lQ0DJ%2B5S8D7BYbWO0ZrgfOCSFNZFMXC6m91cG8nRgD0vWRWUNXKPe0lXJSrb8XhMGgk4KJpmLaYYtP0YTOBaZRDk0IDSGcFUyJawpGaBXWNRKSjJXJYt%2BSyVb%2FvPhp98W0wS%2FYy8P6TlX0RaqZMtvMGbC6Lk%2BIU%2Fa9fPl%2FX6cvG%2Ft%2Blh5NTYhkn%2B%2BxD%2BPk%2Fg65ztWpqiV2JB5vsxfjmx0zneszEqF%2BvkaPxyn8TsV6mMFBoMber7CH45T%2BCZle1piPzHy%2FJqmAbaYdgONTZgIgXGWIZPScO5SX%2FxpXjmD94mGzhF6NII4rDBQN7pelea2NJ9lzMruiqDeKbPmsLJeki9WdpchpUmTNOMqa2JRYaP0nkPJXpO%2BpqgElmwCJfvaK9TpZ0ATikBeVX2IlZX7HOJGyVhzmM9mL16le4dStnlnMJ%2B5XbvW4K7ocC8v7xb9WpmEw220g7aLkbKg3hGH%2BfmFp6YHuLwvVXAa9xwqTTneGh3vU7bI%2FFYYi6xULLpR3VJQq7VJ9as4CDKRfM%2FtZnKWomnHYZ63xhu5shwu3A6C1UrCiWyvNvgKxWbt7dZIDifUXocFGsoTPZqgkk04zM5fhkMRvLbX5CfDbWXFNnQCximG1IPK3j9F8nlmCKut53DyZXs9mh28jRjpIJB1ZB6JlpEc5pczSevMeNy0famMNV3k7qh%2BpJlvtyGqat93K%2B8UIaKPd82%2ByAX8%2F1uRtfJK%2BRALWxVx72j8XIVHqbaBw6XbtZ8ZzPomdlyNn6DOYNbTe%2BpTpRynvJfK2Hj6SNZD%2BsrGaJuHDeEm1j3j1Ep59tBpN7Xq7TGweo%2F2lXrco05vm4Pun9956eDAf5EPPECkXUyji0P0qkmqaxDoALWrcZVm1dinwx%2BxceDBXA8eVdQkNiRH%2BW9IreuYZqaWB9CMbdBvMrqz23w0yQpNVeT9MEtHrbNuyf769ee%2F%2F%2FixZE%2BdEOtQqLjnrXMOjYha55OJWtubQqogPPUtuB%2BNO%2BtSM4p0Zu%2BF7mbYV%2B05UmZdhLjXnR3%2FQ5wHIm%2BfeJ5oHQeBWpyiEbX1p9lxZ%2FA5zN3urOV3Fcv789mLs6yPTdjb9CJkExZraohxJtFv2O2%2F&srcPrefix=%2Fen-US%2Fdocs%2FLearn_web_development%2FExtensions%2FForms%2FCustomizable_select%2F)
 
 --------------------------------------------------------
