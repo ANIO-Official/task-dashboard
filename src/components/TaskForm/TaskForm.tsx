@@ -136,29 +136,25 @@ export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormPr
 
 
     return (
-        <form className="taskForm d-flex flex-column align-items-center" onSubmit={handleSubmit}>
+        <form className="taskForm d-flex flex-column align-items-center rounded p-4 m-3" onSubmit={handleSubmit}>
             <h2>Add New Task 🐈</h2>
-            <div className="task-title-container">
+            <div className="task-title-container d-flex flex-column align-items-center">
                 <label  htmlFor="title">Title</label>
-                <br/>
                 <input maxLength={25} onInput={handleInvalidInputs} className="task-title" onChange={handleInputChange} name="title" value={field.title} required/>
                 <span className="input-error"></span>
             </div>
-            <div className="task-date-container">
+            <div className="task-date-container d-flex flex-column align-items-center">
                 <label  htmlFor="date">Due Date</label>
-                <br/>
                 <input onInput={handleInvalidInputs} className="task-date" onChange={handleInputChange} type="datetime-local" name="date" value={field.date} required/>
                 <span className="input-error"></span>
             </div>
-            <div className="task-memo-container">
+            <div className="task-memo-container d-flex flex-column align-items-center">
                 <label  htmlFor="memo">Memo</label>
-                <br/>
-                <textarea maxLength={300} cols={50} rows={7} onInput={handleInvalidInputs} className="task-memo" onChange={handleInputChange} name="memo" value={field.memo} required/>
+                <textarea maxLength={300} rows={7} onInput={handleInvalidInputs} className="task-memo" onChange={handleInputChange} name="memo" value={field.memo} required/>
                 <span className="input-error"></span>
             </div>
-            <div className="task-status-container">
+            <div className="task-status-container d-flex flex-column align-items-center">
                 <label  htmlFor="status">Status</label>
-                <br/>
                 <select onInvalid={handleInvalidInputs} onChange={handleInputChange} name="status" value={field.status} required>
                     <option value=''>Choose Status</option>
                     <option value='incomplete'>Incomplete</option>
@@ -166,9 +162,8 @@ export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormPr
                 </select>
                 <span className="input-error"></span>
             </div>
-            <div className="task-priority-container">
+            <div className="task-priority-container d-flex flex-column align-items-center">
                 <label  htmlFor="priority">Priority</label>
-                <br/>
                 <select onInvalid={handleInvalidInputs} onChange={handleInputChange} name="priority" value={field.priority} required>
                     <option value=''>Choose Priority</option>
                     <option value="low">Low</option>
@@ -177,8 +172,7 @@ export default function TaskForm({ onSubmit, updateFilteredDefault }: TaskFormPr
                 </select>
                 <span className="input-error"></span>
             </div>
-            <br/>
-            <button type="submit">Add Task</button>
+            <button className="submit-button" type="submit">Add Task</button>
 
         </form>
     )

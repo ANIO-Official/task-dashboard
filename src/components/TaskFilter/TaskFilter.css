@@ -18,8 +18,24 @@ button:hover {
     padding: 0.25rem 1rem;
     font-weight: bold;
     border-radius: 1rem;
+    font-size: 1rem;
 }
 
 .filter-selects{
     margin-top: 1vw;
+}
+
+@media(max-width: 560px){
+    
+.task-filter-result-notification{
+    font-size: 0.7rem;
+}
+.priority-filter{
+    margin-left: 3vw;
+}
+
+.priority-filter, .status-filter{
+    margin-top: 3vw;
+    padding: 0.5rem;
+}
 }

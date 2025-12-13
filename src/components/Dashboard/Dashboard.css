@@ -1,21 +1,85 @@
+.all-tasks-stat{
+    color: rgb(31, 31, 121);
+    font-weight: bold;
+}
+
+button:hover{
+  border-color: #646cff;
+}
+.complete-tasks-stat{
+    color: rgb(3, 100, 47);
+}
+
+.dark{
+  color: white;
+  background-color: #181b27;
+}
+
 .dashboard{
     background: linear-gradient(rgb(171, 213, 226),rgb(246, 250, 255), rgb(169, 162, 238));
     padding: 5vw 10vw;
     border-radius: 1rem;
+    width: fit-content;
 }
 
 .incomplete-tasks-stat{
     color: rgb(180, 84, 6);
     font-weight: bold;
-    font-size: 1.2rem;
 }
-.complete-tasks-stat{
-    color: rgb(3, 100, 47);
-    font-weight: bold;
+
+.task-statistics p{
     font-size: 1.2rem;
+    font-weight: bold;
 }
-.all-tasks-stat{
-    color: rgb(31, 31, 121);
-    font-weight: bold;
-    font-size: 1.2rem;
+.task-statistics h3{
+    font-size: 1.7rem;
+}
+.task-form-and-list-container{
+    margin: 1vw auto;
+}
+
+.task-list-component-container{
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+
+select{
+  transition: 0.4s;
+}
+ select:hover {
+  outline: 2px solid #646cff;
+ }
+select,
+::picker(select) {
+  appearance: base-select;
+}
+select:open::picker-icon {
+  rotate: 90deg;
+}
+select::picker-icon{
+  color: rgb(28, 74, 143);
+}
+::picker(select) {
+  border: none;
+  border-radius: 10px;
+  margin: 0.25rem 0;
+}
+option:checked {
+  font-weight: bold;
+}
+option{
+  background-color: #c8c9ee;
+  font-size: 1rem;
+}
+option:last-of-type{
+  border-radius: 0 0 10px 10px;
+}
+option:first-of-type{
+  border-radius: 10px 10px 0 0 ;
+}
+option:hover{
+   background-color: #0a4175;
+   color: white;
 }

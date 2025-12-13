@@ -32,7 +32,7 @@ import './Dashboard.css'
 export default function Dashboard() {
 
     //Local StorageVariables For use on Load
-    const stringTaskData = localStorage.getItem('taskData') //Get local storage array
+    const stringTaskData = getTasks()? localStorage.getItem('taskData') : '[]' //Check for window & Get local storage array. Return empty array when no data.
     const parsedTaskData = stringTaskData && JSON.parse(stringTaskData) //if Task data exist, parse it.
 
     //Tasks | For Tasks[] updates ================================
@@ -91,17 +91,6 @@ export default function Dashboard() {
         return false
     }
 
-    function parseTaskData() {
-        try {
-            setTasks(prevTasks => [...prevTasks, parsedTaskData]) //set tasks objects to the stored data from local storage
-        }
-        catch (error) {
-            console.error('Error parsing task data from local storage: ', error) //Note to self:Make custom errors
-            setTasks([]) // Return tasks as empty on error
-        }
-        finally { console.log('Attempt Complete: Fetching data from local storage.') }
-    }
-
     /* LOCAL STORAGE FUNCTIONS END================================= */
 
     //JSX
@@ -118,7 +107,7 @@ export default function Dashboard() {
                     <p className='all-tasks-stat'>{tasks.length} Tasks Total</p>
                 </div>
             </div>
-            <div className='main-items row row-col-md-2'>
+            <div className='main-items'>
                 <div className='task-filter-component-container'>
                     <TaskFilter
                         onFilter={handleFiltering}
@@ -126,18 +115,21 @@ export default function Dashboard() {
                         tasks={filteredTasks}
                     />
                 </div>
-                <div className='task-form-component-container col border rounded p-4 m-3 bg-primary-subtle'>
-                    <TaskForm
-                        onSubmit={handleTaskCreation}
-                        updateFilteredDefault={handleFilterDefault}
-                    />
+                <div className='task-form-and-list-container d-md-flex flex-md-row border rounded bg-primary-subtle'>
+                    <div className='task-form-component-container'>
+                        <TaskForm
+                            onSubmit={handleTaskCreation}
+                            updateFilteredDefault={handleFilterDefault}
+                        />
+                    </div>
+                    <div className='task-list-component-container'>
+                        <TaskList
+                            tasks={filteredTasks}
+                            onChange={handleTaskChanges}
+                        />
+                    </div>
                 </div>
-                <div className='task-list-component-container col'>
-                    <TaskList
-                        tasks={filteredTasks}
-                        onChange={handleTaskChanges}
-                    />
-                </div>
+
             </div>
 
         </div>
