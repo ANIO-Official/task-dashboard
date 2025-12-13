@@ -14,7 +14,7 @@ input, textarea{
     color: rgb(255, 3, 3);
     font-style: italic;
 }
-input:user-invalid, textarea:user-invalid{
+input:user-invalid, textarea:user-invalid, select:user-invalid{
   background-color: rgb(247, 168, 168);
   outline: 2px solid red;
 }

@@ -1,6 +1,7 @@
 import type { Filters, TaskFilterProps } from "../../types";
 import React, { useState } from "react";
 import "./TaskFilter.css";
+import * as UtilityFuncts from '../../utils/taskUtils'
 
 export default function TaskFilter({
   onFilter,
@@ -33,19 +34,9 @@ export default function TaskFilter({
     setFilter({ alphabetical: newValue }); //set value of sorting style for button
 
     if (newValue === "a-z") {
-      //Compare first title to next and sort in ascending alphabetical order
-      const listAsc = tasks.sort((a, b) =>
-        a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-      );
-      onSort([...listAsc]);
+     UtilityFuncts.sortAscendingAlphabetical(tasks, onSort)
     } else if (newValue === "z-a") {
-      //Compare first title to next and sort in ascending alphabetical order but then reverse it.
-      const listDesc = tasks
-        .sort((a, b) =>
-          a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-        )
-        .reverse();
-      onSort([...listDesc]);
+      UtilityFuncts.sortDescendingAlphabetical(tasks, onSort)
     } else {
       onSort(tasks); //show all
     }

@@ -28,6 +28,7 @@ import TaskList from "../TaskList/TaskList";
 import TaskFilter from "../TaskFilter/TaskFilter";
 import type { Task } from "../../types/index";
 import "./Dashboard.css";
+import { filterTasksBy } from "../../utils/taskUtils";
 
 export default function Dashboard() {
   //Local StorageVariables For use on Load
@@ -75,28 +76,9 @@ export default function Dashboard() {
     setFilteredTasks((prevTasks) => [...prevTasks, newTask]); //whenever a new task is made, make sure filteredTasks updates as well
   };
 
-  const handleFiltering = (filterValue: string, filterType: String) => {
+  const handleFiltering = (filterValue: string, filterType: string) => {
     setFilter(filterValue);
-    //Show Combos
-    filterValue &&
-      setFilteredTasks(
-        tasks.filter((task) => task.status && task.priority === filterValue)
-      );
-
-    //Show Status or Priority
-    filterValue &&
-      setFilteredTasks(
-        tasks.filter((task) =>
-          filterType === "status"
-            ? task.status === filterValue
-            : filterType === "priority"
-            ? task.priority === filterValue
-            : false
-        )
-      );
-
-    //Show all
-    filterValue === "" && setFilteredTasks(tasks);
+    filterTasksBy(filterValue, filterType,tasks, setFilteredTasks)
   };
 
   const handleSorting = (sortedTasks: Task[]) => {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { TaskFormProps, Task } from "../../types";
 import "./TaskForm.css";
+import { checkValidationFields } from "../../utils/taskUtils";
 
 export default function TaskForm({
   onSubmit,
@@ -15,6 +16,11 @@ export default function TaskForm({
     status: "", //defaults
     priority: "", //defaults
   });
+
+  //Validation Bool
+  const [isValid, setIsValid] = useState<Boolean>(false);
+
+  //Update Input Values
   const handleInputChange = (
     event: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -26,6 +32,9 @@ export default function TaskForm({
       ...prevData, //get the previous version of the state variable keyvalue pairs.
       [name]: value, //set it to the new value from the event target.
     }));
+
+    setIsValid(checkValidationFields(event.currentTarget)); //check validations on change
+    console.log(isValid);
   };
 
   /*FORM VALIDITYCHECKS=========================== */
@@ -71,26 +80,26 @@ export default function TaskForm({
   //On Submit, make a tasks object with values from the user's input.
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
+    if (isValid === true) {
+      //Create form when valid
+      const makeID = `${field.title.trim()[0]}-${Date.now().toString()}`;
+      const newTask: Task = {
+        id: makeID,
+        title: field.title,
+        date: field.date,
+        memo: field.memo,
+        status: field.status,
+        priority: field.priority,
+      };
 
-    //Create form when valid
-    const makeID = `${field.title.trim()[0]}-${Date.now().toString()}`;
-    const newTask: Task = {
-      id: makeID,
-      title: field.title,
-      date: field.date,
-      memo: field.memo,
-      status: field.status,
-      priority: field.priority,
-    };
+      //Send to Submit data &  update tasks state
+      const form = event.currentTarget; //gets the element with the handler (<form>)
+      const newTaskData = new FormData(form); //new form submission from the data submitted
+      onSubmit(newTask); //use new task in handler w/ setter funct in dashboard. Push to Array
+      updateFilteredDefault(newTask);
 
-    //Send to Submit data &  update tasks state
-    const form = event.currentTarget; //gets the element with the handler (<form>)
-    const newTaskData = new FormData(form); //new form submission from the data submitted
-    onSubmit(newTask); //use new task in handler w/ setter funct in dashboard. Push to Array
-    updateFilteredDefault(newTask);
-
-    //Alert of new task added
-    alert(`Adding Task:
+      //Alert of new task added
+      alert(`Adding Task:
             ${newTask.title}
             ${newTask.date}
             ${newTask.memo}
@@ -98,22 +107,27 @@ export default function TaskForm({
             ${newTask.status}
             `);
 
-    //Clear fields after
-    setField({
-      id: "",
-      title: "", //defaults
-      date: Date.now(), //defaults
-      memo: "", //defaults
-      status: "", //defaults
-      priority: "", //defaults
-    });
-    form.reset() //reset form
+      //Clear fields after
+      setField({
+        id: "",
+        title: "", //defaults
+        date: Date.now(), //defaults
+        memo: "", //defaults
+        status: "", //defaults
+        priority: "", //defaults
+      });
+      form.reset(); //reset form
+      setIsValid(false); //reset default valid bool
+    } else if (isValid === false) {
+      alert("Wait! A field is invalid. Please check the highlighted area(s).");
+    }
   };
 
   return (
     <form
       className="taskForm d-flex flex-column align-items-center rounded p-4 m-3"
       onSubmit={handleSubmit}
+      noValidate
     >
       <h2>Add New Task 🐈</h2>
       <div className="task-title-container d-flex flex-column align-items-center">
@@ -159,6 +173,7 @@ export default function TaskForm({
       <div className="task-status-container d-flex flex-column align-items-center">
         <label htmlFor="status">Status</label>
         <select
+          className="task-status"
           onInvalid={handleInvalidInputs}
           onChange={handleInputChange}
           name="status"
@@ -174,6 +189,7 @@ export default function TaskForm({
       <div className="task-priority-container d-flex flex-column align-items-center">
         <label htmlFor="priority">Priority</label>
         <select
+          className="task-priority"
           onInvalid={handleInvalidInputs}
           onChange={handleInputChange}
           name="priority"
