@@ -34,10 +34,14 @@ export default function TaskForm({
     }));
 
     setIsValid(checkValidationFields(event.currentTarget)); //check validations on change
-    console.log(isValid);
   };
 
   /*FORM VALIDITYCHECKS=========================== */
+
+  const checkFormValidity = (event: React.SyntheticEvent<HTMLFormElement>) =>{
+    setIsValid(checkValidationFields(event.currentTarget))
+    console.log('Checking validity: ', isValid)
+  } 
 
   const handleInvalidInputs = (
     event: React.SyntheticEvent<
@@ -71,7 +75,6 @@ export default function TaskForm({
       default:
         target.setCustomValidity("");
     }
-
     targetErrorMessager
       ? (targetErrorMessager.textContent = target.validationMessage)
       : false;
@@ -127,6 +130,7 @@ export default function TaskForm({
     <form
       className="taskForm d-flex flex-column align-items-center rounded p-4 m-3"
       onSubmit={handleSubmit}
+      onMouseDown={checkFormValidity}
       noValidate
     >
       <h2>Add New Task 🐈</h2>

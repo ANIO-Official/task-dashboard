@@ -31,6 +31,10 @@ export function checkValidationFields(currentTarget:HTMLElement){
                 console.log('Cannot create Task. Check priority field.')
                 priorityInput.focus()
                 return false
+            case !titleInput || !dateInput || !memoInput || !statusInput || !priorityInput:
+                console.log('Something is empty.')
+                currentTarget.focus()
+                return false
             default:
                 return true
                 
